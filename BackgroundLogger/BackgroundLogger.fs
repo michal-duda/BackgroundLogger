@@ -43,11 +43,6 @@ module Core =
         let subject = new Subject<string>()
         let eventLoopScheduler = new EventLoopScheduler()
 
-        let initList m =
-            let l = new List<string>()
-            l.Add(m)
-            l
-
         let subscription = subject.AsObservable()
                             .Buffer(bufferTimeout, bufferSize)
                             .Where(fun b -> b.Count > 0)
